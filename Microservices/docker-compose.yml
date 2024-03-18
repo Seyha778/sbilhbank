@@ -1,0 +1,53 @@
+version: '3'
+services:
+  eurekaserver:
+    image: 's3yha/eureka-server-image:latest'
+    container_name: eurekaserver
+    ports:
+      - "8761:8761"
+
+  cms:
+      image: 's3yha/cms-image:latest'
+      container_name: cms
+      ports:
+        - "9030:9030"
+      depends_on:
+        - eurekaserver
+      environment:
+        - EUREKA_SERVER_ADDRESS=http://eurekaserver:8761/eureka
+  cbs:
+    image: 's3yha/cbs-image:latest'
+    container_name: cbs
+    ports:
+      - "9020:9020"
+    depends_on:
+      - eurekaserver
+    environment:
+      - EUREKA_SERVER_ADDRESS=http://eurekaserver:8761/eureka
+  external:
+    image: 's3yha/external-image:latest'
+    container_name: external
+    ports:
+      - "9090:9090"
+    depends_on:
+      - eurekaserver
+    environment:
+      - EUREKA_SERVER_ADDRESS=http://eurekaserver:8761/eureka
+  nbc:
+    image: 's3yha/nbc-image:latest'
+    container_name: nbc
+    ports:
+      - "9040:9040"
+    depends_on:
+      - eurekaserver
+    environment:
+      - EUREKA_SERVER_ADDRESS=http://eurekaserver:8761/eureka
+  notification:
+    image: 's3yha/notification-image:latest'
+    container_name: notification
+    ports:
+      - "9060:9060"
+    depends_on:
+      - eurekaserver
+    environment:
+      - EUREKA_SERVER_ADDRESS=http://eurekaserver:8761/eureka
