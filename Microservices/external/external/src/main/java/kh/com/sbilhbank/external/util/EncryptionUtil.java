@@ -13,8 +13,8 @@ public class EncryptionUtil {
         }
 
         private static final String ALGORITHM = "AES/CBC/PKCS7Padding";
-        private static final String SECRET_KEY = "1234567890123456"; // Change this with your own secret key
-        private static final String IV = "1234567890123456"; // Change this with your own initialization vector
+        private static final String SECRET_KEY = "1234567890123456";
+        private static final String IV = "1234567890123456";
 
         public static String encrypt(String plainText) throws Exception {
             Cipher cipher = Cipher.getInstance(ALGORITHM);
