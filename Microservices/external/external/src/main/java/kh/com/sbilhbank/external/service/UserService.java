@@ -8,6 +8,4 @@ public interface UserService {
     List<User> getAllUsers();
     User getUserById(Long id);
     User createUser(User user);
-//    String decrypt(String encryptedData);
-//    String encrypt(String data);
 }

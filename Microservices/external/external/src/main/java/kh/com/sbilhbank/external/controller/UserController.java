@@ -45,9 +45,9 @@ public class UserController {
     }
 
     @PostMapping("/encrypt")
-    public String cryptedData(@RequestBody String encryptedData) {
+    public String cryptedData(@RequestBody String encrypted) {
         try {
-            String ecryptedData = EncryptionUtil.encrypt(encryptedData);
+            String ecryptedData = EncryptionUtil.encrypt(encrypted);
             return ecryptedData;
         } catch (Exception e) {
             e.printStackTrace();
