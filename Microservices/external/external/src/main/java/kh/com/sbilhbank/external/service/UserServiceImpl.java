@@ -6,6 +6,15 @@ import org.springframework.stereotype.Service;
 import java.util.ArrayList;
 import java.util.List;
 
+
+
+import org.bouncycastle.jce.provider.BouncyCastleProvider;
+import javax.crypto.Cipher;
+import javax.crypto.spec.IvParameterSpec;
+import javax.crypto.spec.SecretKeySpec;
+import java.security.Security;
+import java.util.Base64;
+
 @Service
 public class UserServiceImpl implements UserService {
     private final List<User> users = new ArrayList<>();
@@ -30,4 +39,5 @@ public class UserServiceImpl implements UserService {
         users.add(user);
         return user;
     }
+
 }
